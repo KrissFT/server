@@ -11,19 +11,21 @@ router.get('/socies', (req: Request, res: Response) => {
 });
 
 router.post('/registro', (req: Request, res: Response) => {
-    const nombre = req.body.nombre?req.body.nombre:null;
+    let nombre:string
+    let apellido:string
+    let fecha_de_nacimiento:string
+    let pronombre:string
+    let documento:string
+    let nickname:string
 
-    if(nombre===null){
-        res.json({
-            ok:false,
-            mensaje: "Nombre no recibido"
-        })
-    } else {
-        res.json({
-            ok:true,
-            mensaje: `Bienvenide ${nombre}!!!`
-        })            
-    }
+    nombre = req.body.nombre?req.body.nombre:null
+    apellido = req.body.apellido?req.body.apellido:null
+    fecha_de_nacimiento = req.body.fechaNac?req.body.fechaNac:null
+    pronombre = req.body.pronoun?req.body.pronoun:null
+    documento = req.body.dni?req.body.dni:null
+    nickname = req.body.nick?req.body.nick:null
     
     console.log(`Nombre: ${nombre}`)
+    console.log(fecha_de_nacimiento)
+    console.log(pronombre)
 });
