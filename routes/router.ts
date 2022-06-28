@@ -45,56 +45,33 @@ router.get('/socie/:nick', (req: Request, res: Response) => {
 });
 
 router.post('/registro', (req: Request, res: Response) => {
-    let nombre:string
-    let apellido:string
-    let fecha_de_nacimiento:string
-    let pronombre:string
-    let documento:string
-    let nickname:string
 
-    let direccion:string
-    let barrio:string
-    let localidad:string
+    let nombre:string = req.body.nombre?req.body.nombre:null;
+    let apellido:string = req.body.apellido?req.body.apellido:null;
+    let fecha_de_nacimiento:string = req.body.fechaNac?req.body.fechaNac:null;
+    let pronombre:string = req.body.pronoun?req.body.pronoun:null;
+    let documento:string = req.body.dni?req.body.dni:null;
+    let nickname:string = req.body.nick?req.body.nick:null;
 
-    let telefono:string
-    let redes:string
-    let correo:string
+    let direccion:string = req.body.direccion?req.body.direccion:null;
+    let barrio:string = req.body.barrio?req.body.barrio:null;
+    let localidad:string = req.body.localidad?req.body.localidad:null;
 
-    let escuela:string
-    let carrera:string
+    let telefono:string = req.body.tel?req.body.tel:null;
+    let redes:string = req.body.redes?req.body.redes:null;
+    let correo:string = req.body.mail?req.body.mail:null;
 
-    let nombreTutor:string
-    let apellidoTutor:string
-    let vinculo:string
-    let telefonoTutor:string
-    let documentoTutor:string
-    let edadTutor:string
+    let escuela:string = req.body.esc?req.body.esc:null;
+    let carrera:string = req.body.carrera?req.body.carrera:null;
 
-    nombre = req.body.nombre?req.body.nombre:null
-    apellido = req.body.apellido?req.body.apellido:null
-    fecha_de_nacimiento = req.body.fechaNac?req.body.fechaNac:null
-    pronombre = req.body.pronoun?req.body.pronoun:null
-    documento = req.body.dni?req.body.dni:null
-    nickname = req.body.nick?req.body.nick:null
+    let nombreTutor:string = req.body.nombreTutor?req.body.nombreTutor:null;
+    let apellidoTutor:string = req.body.apellidoTutor?req.body.apellidoTutor:null;
+    let vinculo:string = req.body.vinculo?req.body.vinculo:null;
+    let telefonoTutor:string = req.body.telTutor?req.body.telTutor:null;
+    let documentoTutor:string = req.body.dniTutor?req.body.dniTutor:null;
+    let edadTutor:string = req.body.edadTutor?req.body.edadTutor:null;
 
-    direccion = req.body.direccion?req.body.direccion:null
-    barrio = req.body.barrio?req.body.barrio:null
-    localidad = req.body.localidad?req.body.localidad:null
-    
-    telefono = req.body.tel?req.body.tel:null
-    redes = req.body.redes?req.body.redes:null
-    correo = req.body.mail?req.body.mail:null
-
-    escuela = req.body.esc?req.body.esc:null
-    carrera = req.body.carrera?req.body.carrera:null
-
-    nombreTutor = req.body.nombreTutor?req.body.nombreTutor:null
-    apellidoTutor = req.body.apellidoTutor?req.body.apellidoTutor:null
-    vinculo = req.body.vinculo?req.body.vinculo:null
-    telefonoTutor = req.body.telTutor?req.body.telTutor:null
-    documentoTutor = req.body.dniTutor?req.body.dniTutor:null
-    edadTutor = req.body.edadTutor?req.body.edadTutor:null
-
+    pronombre = String(pronombre).replace(",", "")
     if (nombre !== null && apellido !== null && fecha_de_nacimiento !== null && pronombre !== null && documento !== null){
         console.log(`Nombre: ${nombre}`)
         console.log(`Apellido: ${apellido}`)
