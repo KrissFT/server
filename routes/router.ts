@@ -1,4 +1,4 @@
-import { Router, Request, Response } from "express";
+import { Router, Request, Response, request, response } from "express";
 import { Socie } from "../models/socie.model";
 export const router = Router();
 
@@ -44,6 +44,28 @@ router.get('/socie/:nick', (req: Request, res: Response) => {
     });
 });
 
+router.post('/edit-socie/:nick', (req: Request, res: Response) =>{
+    
+    socies.forEach(socie => {
+        if (socie.nick === req.params.nick){
+            if (req.body.edad === String){
+                socie.nick = req.body.nick;
+                socie.apellido = req.body.apellido;
+                socie.edad = parseInt(req.body.edad);
+                socie.nombre = req.body.nombre;
+            } else {
+                socie.nick = req.body.nick;
+                socie.apellido = req.body.apellido;
+                socie.edad = req.body.edad;
+                socie.nombre = req.body.nombre;
+            }
+        }
+    });
+    res.json({
+        socies: socies
+    })
+});
+
 router.post('/registro', (req: Request, res: Response) => {
 
     let nombre:string = req.body.nombre?req.body.nombre:null;
@@ -72,7 +94,7 @@ router.post('/registro', (req: Request, res: Response) => {
     let edadTutor:string = req.body.edadTutor?req.body.edadTutor:null;
 
     pronombre = String(pronombre).replace(",", "")
-    if (nombre !== null && apellido !== null && fecha_de_nacimiento !== null && pronombre !== null && documento !== null){
+    if (nombre !== null && apellido !== null){
         console.log(`Nombre: ${nombre}`)
         console.log(`Apellido: ${apellido}`)
         console.log(`Fecha de nacimiento: ${fecha_de_nacimiento}`)
